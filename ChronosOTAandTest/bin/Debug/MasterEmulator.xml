@@ -1,0 +1,1986 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MasterEmulator</name>
+    </assembly>
+    <members>
+        <member name="T:Nordicsemi.DeviceInfoType">
+            <summary>
+            Specifies the different types of device info.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.Flags">
+            <summary>
+            Flags
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.ServicesMoreAvailableUuid16">
+            <summary>
+            Incomplete list of implemented 16bit UUID services.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.ServicesCompleteListUuid16">
+            <summary>
+            Complete list of implemented 16bit UUID services.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.ServicesMoreAvailableUuid32">
+            <summary>
+            Incomplete list of implemented 32bit UUID services.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.ServicesCompleteListUuid32">
+            <summary>
+            Complete list of implemented 32bit UUID services.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.ServicesMoreAvaiableUuid128">
+            <summary>
+            Incomplete list of implemented 128bit UUID services.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.ServicesCompleteListUuid128">
+            <summary>
+            Complete list of implemented 128bit services.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.ShortenedLocalName">
+            <summary>
+            Shortened local name of device.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.CompleteLocalName">
+            <summary>
+            Complete local name of device.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.TxPowerLevel">
+            <summary>
+            TX power level.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.SimplePairingClassOfDevice">
+            <summary>
+            Simple pairing class of device.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.SimplePairingHash">
+            <summary>
+            Simple pairing hash.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.SimplePairingRandomizer">
+            <summary>
+            Simple pairing randomizer.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.SecurityTkValue">
+            <summary>
+            Security TK value.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.SecurityOobFlags">
+            <summary>
+            Security OOB flags.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.SlaveConnectionIntervalRange">
+            <summary>
+            Slave connection interval range.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.SolicitedServicesUuid16">
+            <summary>
+            List of solicited services 16bit UUID.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.SolicitedServicesUuid128">
+            <summary>
+            List of solicited services 128bit UUID.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.ServiceData">
+            <summary>
+            Service data.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.PublicTargetAddress">
+            <summary>
+            Public target address.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.RandomTargetAddress">
+            <summary>
+            Random target address
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.Appearance">
+            <summary>
+            Appearance
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.Rssi">
+            <summary>
+            Received signal strength indicator, dBm
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DeviceInfoType.ManufacturerSpecificData">
+            <summary>
+            Manufacturer specific data.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.BtDevice">
+            <summary>
+            This class holds information about a BTLE device.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.BtDevice.#ctor(Nordicsemi.BtDeviceAddress,System.Collections.Generic.IDictionary{Nordicsemi.DeviceInfoType,System.String})">
+            <summary>
+            Class constructor.
+            </summary>
+            <param name="address">Address of the device.</param>
+            <param name="deviceInfo">List of info from the device.</param>
+        </member>
+        <member name="M:Nordicsemi.BtDevice.ToString">
+            <summary>
+            String representation of object.
+            </summary>
+            <returns>Returns string representation of the object.</returns>
+        </member>
+        <member name="P:Nordicsemi.BtDevice.DeviceAddress">
+            <summary>
+            The device address.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtDevice.DeviceInfo">
+            <summary>
+            A dictionary of info from the device. When used in device discovery
+            the collection contains the AD packet data that was contained in the advertising packet.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.BtDeviceAddressType">
+            <summary>
+            Address types of a Bluetooth Device Address.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtDeviceAddressType.Public">
+            <summary>
+            Public address type.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtDeviceAddressType.Random">
+            <summary>
+            Random address type.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.BtDeviceAddress">
+            <summary>
+            This class represents a BT device address.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.BtDeviceAddress.#ctor(System.String)">
+            <summary>
+            Class constructor.
+            </summary>
+            <remarks>The address will be validated, and if the validaton fails an ArgumentException is thrown.</remarks>
+            <param name="address">Device address in string format.</param>
+            <example>Example device address: "11223344AABB".</example>
+        </member>
+        <member name="M:Nordicsemi.BtDeviceAddress.#ctor(System.String,Nordicsemi.BtDeviceAddressType)">
+            <summary>
+            Class constructor.
+            </summary>
+            <remarks>The address with the given address type will be instantiated.</remarks>
+            <param name="address">Device address in string format.</param>
+            <param name="addressType">Address type of the address.</param>
+        </member>
+        <member name="M:Nordicsemi.BtDeviceAddress.IsValidAddress(System.String)">
+            <summary>
+            Validates the address format.
+            </summary>
+            <param name="address">Device address to validate</param>
+            <returns>Returns true for valid address and false for invalid address.</returns>
+            <remarks>The validation criteria is formulated with this regular expression: (([a-f]|[A-F]|[0-9]){8})</remarks>
+        </member>
+        <member name="M:Nordicsemi.BtDeviceAddress.ToString">
+            <summary>
+            Returns a string representation of the address.
+            </summary>
+            <returns>Returns a string representation of the address.</returns>
+        </member>
+        <member name="M:Nordicsemi.BtDeviceAddress.Equals(System.Object)">
+            <summary>
+            Checks for equality between instance and argument object.
+            </summary>
+            <param name="obj">Object to check for address equality with.</param>
+            <returns>Returns true if the address value of the objects are equal.</returns>
+        </member>
+        <member name="M:Nordicsemi.BtDeviceAddress.Equals(Nordicsemi.BtDeviceAddress)">
+            <summary>
+            Check for equality of device addresses.
+            </summary>
+            <param name="address">Address to check against instance address.</param>
+            <returns>Returns true if the addresses are equal.</returns>
+        </member>
+        <member name="M:Nordicsemi.BtDeviceAddress.GetHashCode">
+            <summary>
+            Get hash code.
+            </summary>
+            <returns>Returns hash code.</returns>
+        </member>
+        <member name="M:Nordicsemi.BtDeviceAddress.op_Equality(Nordicsemi.BtDeviceAddress,Nordicsemi.BtDeviceAddress)">
+            <summary>
+            Operator overload of equal operator.
+            </summary>
+            <param name="a">Address to compare.</param>
+            <param name="b">Address to compare.</param>
+            <returns>Returns true if arguments are equal.</returns>
+        </member>
+        <member name="M:Nordicsemi.BtDeviceAddress.op_Inequality(Nordicsemi.BtDeviceAddress,Nordicsemi.BtDeviceAddress)">
+            <summary>
+            Operator overload of not equal operator.
+            </summary>
+            <param name="a">Address to compare.</param>
+            <param name="b">Address to compare.</param>
+            <returns>Returns true if arguments are not equal.</returns>
+        </member>
+        <member name="P:Nordicsemi.BtDeviceAddress.Value">
+            <summary>
+            The address value in string format.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtDeviceAddress.AddressType">
+            <summary>
+            The address type of the device address.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.BtScanType">
+            <summary>
+            Scan type of an LE scan.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtScanType.PassiveScanning">
+            <summary>
+            Passive scanning. No SCAN_REQ packets shall be sent.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtScanType.ActiveScanning">
+            <summary>
+            Active scanning. SCAN_REQ packets may be sent.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.BtScanParameters">
+            <summary>
+            Specifies parameters that are used for device discovery.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtScanParameters.ScanIntervalMsMin">
+            <summary>
+            The minimum allowed value of ScanIntervalMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtScanParameters.ScanIntervalMsMax">
+            <summary>
+            The maximum allowed value of ScanIntervalMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtScanParameters.ScanIntervalMsDefault">
+            <summary>
+            The default value of ScanIntervalMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtScanParameters.ScanWindowMsMin">
+            <summary>
+            The minimum allowed value of ScanWindowMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtScanParameters.ScanWindowMsMax">
+            <summary>
+            The maximum allowed value of ScanWindowMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtScanParameters.ScanWindowMsDefault">
+            <summary>
+            The default value of ScanWindowMs
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.BtScanParameters.#ctor">
+            <summary>
+            Instantiates an instance of BtScanParameters class.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtScanParameters.ScanType">
+            <summary>
+            The scan type used in device discovery. Default is passive scanning.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtScanParameters.ScanIntervalMs">
+            <summary>
+            The scan interval used in device discovery, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtScanParameters.ScanWindowMs">
+            <summary>
+            The scan window used in device discovery, in milliseconds.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.BtUuid">
+            <summary>
+            Bluetooth UUID (Universally Unique Identifier).
+            </summary>
+            <remarks>When an instance is created with either of the constructors, both
+            the 16 bit and 128 bit UUID properties are set.</remarks>
+        </member>
+        <member name="F:Nordicsemi.BtUuid.BtBaseUuid">
+            <summary>
+            The official Bluetooth UUID base. Represented as a 16 byte hex string in big endian order.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.BtUuid.#ctor(System.Byte[])">
+            <summary>
+            Creates an instance of the class based on the 128 bit representation of the UUID. 
+            </summary>
+            <param name="uuid128bit">The 128 bit UUID as byte array, in little endian byte order.</param>
+        </member>
+        <member name="M:Nordicsemi.BtUuid.#ctor(System.String)">
+            <summary>
+            Creates an instance of the class based on a string representation of the UUID.
+            </summary>
+            <param name="uuidHexString"></param>
+            <remarks>The string representation of the UUID must adhere to the following formatting rules:
+            - Use hex notation
+            - The length must be exactly 2 bytes for 16 bit UUID or 16 bytes (32 nibbles) for 128 bit UUID.
+            - 128 bit number may optionally be split up with hyphens like in the BT spec suggested notation
+            - Example: "1234"
+            - Example: "00001234-0000-1000-8000-00805F9B34FB"
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.BtUuid.#ctor(System.Int32)">
+            <summary>
+            Creates an instance of the class based on the 16 bit representation of the UUID. 
+            The UUID is assumed to use the Bluetooth Base UUID.
+            </summary>
+            <param name="uuid16bit">The 16bit UUID.</param>
+        </member>
+        <member name="M:Nordicsemi.BtUuid.#ctor(System.Int32,System.Byte[])">
+            <summary>
+            Creates an instance of the class based on a 128 bit base and a 16 bit value.
+            </summary>
+            <param name="uuid16bitValue">The 16 bit value of the uuid.</param>
+            <param name="uuidBase">The base of the uuid as a byte array. The length of the array must be 16 bytes,
+            little endian byte order.</param>
+            <remarks>The 16 bit value will be combined to the base with the following algorithm
+            from the Bluetooth specification:
+            <code>128_bit_value = 16_bit_value * 2^96 + Bluetooth_Base_UUID</code>.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.BtUuid.#ctor(System.Int32,System.String)">
+            <summary>
+            Creates an instance of the class based on a uuid base and a 16 bit uuid value.
+            </summary>
+            <param name="uuid16bitValue">The 16 bit value of the uuid.</param>
+            <param name="uuidBaseHexString">The base of the uuid given as a hex string, big endian byte order.</param>
+            <remarks>The 16 bit value will be combined to the base with the following algorithm
+            from the Bluetooth specification:
+            <code>128_bit_value = 16_bit_value * 2^96 + Bluetooth_Base_UUID</code>.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.BtUuid.HasBtBase">
+            <summary>
+            Indicates whether the UUID base equals the Bluetooth UUID base.
+            </summary>
+            <returns>Returns true if the base equals the Bluetooth UUID base.</returns>
+        </member>
+        <member name="M:Nordicsemi.BtUuid.ToString">
+            <summary>
+            Returns a string representation of the UUID.
+            <remarks>If the UUID has a Bluetooth base, then the 16 bit represenation of the UUID 
+            is returned. It the UUID has a vendor specific base, then the full 128 bit representation
+            is returned.</remarks>
+            </summary>
+            <returns>String that represents the object.</returns>
+        </member>
+        <member name="P:Nordicsemi.BtUuid.Uuid128bit">
+            <summary>
+            128 bit UUID represented as a byte array. The byte array is in little endian order.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtUuid.Uuid128bitHexString">
+            <summary>
+            128 bit representation of the UUID as a hex string, in big endian byte order.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtUuid.Uuid16bit">
+            <summary>
+            16 bit representation of the UUID.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtUuid.UuidBase">
+            <summary>
+            The 128 bit base of the UUID represented as a byte array. The byte array is in little endian order.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtUuid.UuidBaseHexString">
+            <summary>
+            The 128 bit base of the UUID represented as a hex string. The number is in big endian byte order.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.BtConnectionParameters">
+            <summary>
+            Specifies parameters that are used for BTLE connection creation.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.ScanIntervalMsMin">
+            <summary>
+            The minimum allowed value of ScanIntervalMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.ScanIntervalMsMax">
+            <summary>
+            The maximum allowed value of ScanIntervalMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.ScanIntervalMsDefault">
+            <summary>
+            The default value of ScanIntervalMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.ScanWindowMsMin">
+            <summary>
+            The minimum allowed value of ScanWindowMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.ScanWindowMsMax">
+            <summary>
+            The maximum allowed value of ScanWindowMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.ScanWindowMsDefault">
+            <summary>
+            The default value of ScanWindowMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.ConnectionIntervalMsMin">
+            <summary>
+            The minimum allowed value of ConnectionIntervalMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.ConnectionIntervalMsMax">
+            <summary>
+            The maximum allowed value of ConnectionInterval
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.ConnectionIntervalMsDefault">
+            <summary>
+            The default value of ConnectionIntervalMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.SlaveLatencyMin">
+            <summary>
+            The minimum allowed value of SlaveLatency
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.SlaveLatencyMax">
+            <summary>
+            The maximum allowed value of SlaveLatency
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.SlaveLatencyDefault">
+            <summary>
+            The default value of SlaveLatency
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.SupervisionTimeoutMsMin">
+            <summary>
+            The minimum allowed value of SupervisionTimeoutMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.SupervisionTimeoutMsMax">
+            <summary>
+            The maximum allowed value of SupervisionTimeoutMs
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.BtConnectionParameters.SupervisionTimeoutMsDefault">
+            <summary>
+            The default value of SupervisionTimeout
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.BtConnectionParameters.#ctor">
+            <summary>
+            Creates an instance of the BtConnectionParameters class. All properties are set to 
+            their corresponding default values.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtConnectionParameters.ScanIntervalMs">
+            <summary>
+            The scan interval used in the BTLE connection creation, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtConnectionParameters.ScanWindowMs">
+            <summary>
+            The scan window used in the BTLE connection creation, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtConnectionParameters.ConnectionIntervalMs">
+            <summary>
+            The connection interval of the BTLE connection, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtConnectionParameters.SlaveLatency">
+            <summary>
+            The slave latency to use in the BTLE connection.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.BtConnectionParameters.SupervisionTimeoutMs">
+            <summary>
+            The supervision timeout to use in the BTLE connection.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.AttributeEntry">
+            <summary>
+            Holds information of attribute data.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.AttributeEntry.#ctor(System.Int32,Nordicsemi.BtUuid,System.Byte[])">
+            <summary>
+            Creates instance of <see cref="T:Nordicsemi.AttributeEntry"/>.
+            </summary>
+            <param name="handle">Attribute handle.</param>
+            <param name="uuid">Attribute UUID.</param>
+            <param name="data">Attribute data.</param>
+        </member>
+        <member name="M:Nordicsemi.AttributeEntry.ToString">
+            <summary>
+            String representation of the object.
+            </summary>
+            <returns>Returns string representation of the object.</returns>
+        </member>
+        <member name="P:Nordicsemi.AttributeEntry.Handle">
+            <summary>
+            The handle of the attribute.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.AttributeEntry.Uuid">
+            <summary>
+            The UUID of the attribute.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.AttributeEntry.Data">
+            <summary>
+            The data of the attribute.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.EmbeddedDll">
+            <summary>
+            A class used by managed classes to embed unmanaged DLLs.
+            This will extract and load DLLs from embedded binary resources.
+            
+            To Use
+            <list type="">
+            <item>Add all of the DLLs as binary file resources to the project. Right click the project, 
+            select Add Resource, Add Existing File. The resource name will be similar but not exactly 
+            the same as the DLL file name.</item>
+            <item>Call EmbeddedDllClass.ExtractEmbeddedDlls() for each DLL that is needed</item>
+            </list>
+            <example>
+                          EmbeddedDllClass.ExtractEmbeddedDlls("hci_coder.dll", 
+                          "hci_coder_net.hci_coder.dll, Assembly.GetExecutingAssembly());
+            </example>
+            <example>
+                          EmbeddedDllClass.LoadDll("myscrewball.dll");
+            </example>
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.EmbeddedDll.ExtractEmbeddedDlls(System.String,System.String,System.Reflection.Assembly)">
+            <summary>
+            Extract DLLs from resources to temporary folder
+            </summary>
+            <param name="dllName">name of DLL file to create (including dll suffix)</param>
+            <param name="resourceName">The resource name (fully qualified)</param>
+            <param name="assembly">The assembly to extract DLL from.</param>
+        </member>
+        <member name="M:Nordicsemi.EmbeddedDll.LoadDll(System.String)">
+            <summary>
+            managed wrapper around LoadLibrary
+            </summary>
+            <param name="dllName"></param>
+        </member>
+        <member name="T:Nordicsemi.DisconnectReason">
+            <summary>
+            Specifies reasons for connection termination.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.ConnectionTimeout">
+            <summary>
+            The connection supervision timeout was exceeded.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.RemoteUserTerminatedConnection">
+            <summary>
+            The remote user terminated the connection.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.RemoteDevTerminationDueToLowResources">
+            <summary>
+            The remote device terminated due to low resources.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.RemoteDevTerminationDueToPowerOff">
+            <summary>
+            The remote device terminated due to power off.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.LocalHostTerminatedConnection">
+            <summary>
+            The connection was terminated by the local host.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.UnspecifiedError">
+            <summary>
+            Unspecified error.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.ControllerBusy">
+            <summary>
+            The controller was busy and unable to process the request.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.UnacceptableConnectionInterval">
+            <summary>
+            The remote device terminated the connection because of an unacceptable connection interval.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.DirectedAdvertisingTimeout">
+            <summary>
+            Directed advertising completed without a connection being created.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.ConnectionTerminatedDueToMicFailure">
+            <summary>
+            The connection was terminated due to MIC failure.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.DisconnectReason.ConnectionFailedToBeEstablished">
+            <summary>
+            The connection failed to be established.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.ValueEventArgs`1">
+            <summary>
+            Provides a generic placeholder for events carrying one value.
+            </summary>
+            <typeparam name="T">The type that shall be used for the value</typeparam>
+        </member>
+        <member name="M:Nordicsemi.ValueEventArgs`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the class
+            </summary>
+            <param name="value">The value of the event.</param>
+        </member>
+        <member name="P:Nordicsemi.ValueEventArgs`1.Value">
+            <summary>
+            Gets the value of the event.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.PipeDataEventArgs">
+            <summary>
+            Provides data for the DataReceived event.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.PipeDataEventArgs.#ctor(System.Int32,System.Byte[])">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+            <param name="pipeNumber">The pipe number the data was received over.</param>
+            <param name="data">The data that was received</param>
+        </member>
+        <member name="P:Nordicsemi.PipeDataEventArgs.PipeNumber">
+            <summary>
+            The pipe number of the data received.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.PipeDataEventArgs.PipeData">
+            <summary>
+            The actual data that was received over the pipe.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.DataRequestedEventArgs">
+            <summary>
+            Provides data for the DataRequested event.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.DataRequestedEventArgs.#ctor(System.Int32,System.Byte[])">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+            <param name="pipeNumber">The pipe number the data was requested for.</param>
+            <param name="data">The data of the pipe at the time of the request.</param>
+        </member>
+        <member name="P:Nordicsemi.DataRequestedEventArgs.PipeNumber">
+            <summary>
+            The pipe number the data was requested for.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.DataRequestedEventArgs.PipeData">
+            <summary>
+            The data that will be sent if the request is not rejected with <see cref="P:Nordicsemi.DataRequestedEventArgs.RejectDataRequest"/>. 
+            This variable is prefilled with the data that the pipe has at the time of the request. 
+            The application is free to alter or provide new data by setting this variable.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.DataRequestedEventArgs.RejectDataRequest">
+            <summary>
+            The request can be rejected by setting this property. 
+            The default is false, meaning the request is accepted if this property is not set to true.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.DataRequestedEventArgs.ErrorCode">
+            <summary>
+            If the <see cref="P:Nordicsemi.DataRequestedEventArgs.RejectDataRequest"/> is set, the error code must be provided with this property.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.PipeErrorCode">
+            <summary>
+            Specifies the different error codes.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.InvalidHandle">
+            <summary>
+            The attribute handle given was not valid.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.ReadNotPermitted">
+            <summary>
+            The attribute cannot be read.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.WriteNotPermitted">
+            <summary>
+            The attribute cannot be written.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.InvalidPdu">
+            <summary>
+            The attribute PDU was invalid.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.InsufficientAuthentication">
+            <summary>
+            The attribute requires authentication before it can be read or written.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.RequestNotSupported">
+            <summary>
+            Attribute server does not support the request received from the client.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.InvalidOffset">
+            <summary>
+            Offset specified was past the end of the attribute.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.InsufficientAuthorization">
+            <summary>
+            The attribute requires authorization before it can be read or written.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.PrepareQueueFull">
+            <summary>
+            Too many prepare writes have been queued.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.AttributeNotFound">
+            <summary>
+            No attribute found within the given attribute handle range.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.AttributeNotLong">
+            <summary>
+            The attribute cannot be read or written using the Read Blob Request
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.InsufficientEncryptionKeySize">
+            <summary>
+            The Encryption Key Size used for encrypting this link is insufficient.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.InvalidAttributeValueLength">
+            <summary>
+            The attribute value length is invalid for the operation.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.UnlikelyError">
+            <summary>
+            The attribute request that was requested has encountered an error that was unlikely, and therefore could not be completed as requested.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.InsufficientEncryption">
+            <summary>
+            The attribute requires encryption before it can be read or written.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.UnsupportedGroupType">
+            <summary>
+            The attribute type is not a supported grouping attribute as defined by a higher layer specification.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.InsufficientResources">
+            <summary>
+            Insufficient Resources to complete the request
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeErrorCode.ApplicationError">
+            <summary>
+            Application error code defined by a higher layer specification. 
+            ApplicationError comprises all error codes from 0x80 to 0xFF.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.PipeErrorEventArgs">
+            <summary>
+            Provides data for the PipeError event.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.PipeErrorEventArgs.#ctor(System.Int32,Nordicsemi.PipeErrorCode)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+            <param name="pipenumber">Pipe number.</param>
+            <param name="errorCode">Error code.</param>
+        </member>
+        <member name="P:Nordicsemi.PipeErrorEventArgs.PipeNumber">
+            <summary>
+            The number of the pipe related to the error.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.PipeErrorEventArgs.ErrorCode">
+            <summary>
+            The type of error that occured.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.ConnectionUpdateRequestEventArgs">
+            <summary>
+            Provides data for ConnectionUpdateRequest event.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.ConnectionUpdateRequestEventArgs.#ctor(System.Int32,System.Double,System.Double,System.Int32,System.Double)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+            <param name="identifier">Connection update identifier.</param>
+            <param name="intervalMinMs">Minimum connection interval in milliseconds.</param>
+            <param name="intervalMaxMs">Maximum connection interval in milliseconds.</param>
+            <param name="slaveLatency">Connection slave latency.</param>
+            <param name="timeoutMs">Connection supervision timeout in milliseconds.</param>
+        </member>
+        <member name="P:Nordicsemi.ConnectionUpdateRequestEventArgs.Identifier">
+            <summary>
+            An identifier that shall be used with the <see cref="M:Nordicsemi.MasterEmulator.SendConnectionUpdateResponse(System.Int32,Nordicsemi.ConnectionUpdateResponse)"/>
+            in order to tie together the correct request with the response.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.ConnectionUpdateRequestEventArgs.ConnectionIntervalMinMs">
+            <summary>
+            The lower limit of the requested connection interval in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.ConnectionUpdateRequestEventArgs.ConnectionIntervalMaxMs">
+            <summary>
+            The upper limit of the requested connection interval in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.ConnectionUpdateRequestEventArgs.SlaveLatency">
+            <summary>
+            The requested slave latency.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.ConnectionUpdateRequestEventArgs.ConnectionSupervisionTimeoutMs">
+            <summary>
+            The requested connection supervision timeout in milliseconds.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.SecurityRequestEventArgs">
+            <summary>
+            Provides data for SecurityRequest event.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.SecurityRequestEventArgs.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+            <param name="isBondingRequested">Value of IsBondingRequested proptery.</param>
+            <param name="isMitmRequested">Value of IsMitmRequested proptery.</param>
+        </member>
+        <member name="P:Nordicsemi.SecurityRequestEventArgs.IsBondingRequested">
+            <summary>
+            Indicates whether bonding is requested by the peer device.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.SecurityRequestEventArgs.IsMitmRequested">
+            <summary>
+            Indicates whether man-in-the-middle protection is requested by the peer device.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.PasskeyRequestEventArgs">
+            <summary>
+            Provides data for PasskeyRequest event.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PasskeyRequestEventArgs.minimumAllowedKeyValue">
+            <summary>
+            The miminum allowed key value.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PasskeyRequestEventArgs.maximumAllowedKeyValue">
+            <summary>
+            The maximum allowed key value.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.PasskeyRequestEventArgs.Passkey">
+            <summary>
+            The requested passkey shall be entered into this field.
+            </summary>
+            <remarks>The passkey must be between the values 0 and 999999 (6 digits).</remarks>
+            <exception cref="T:System.ArgumentException"/>
+        </member>
+        <member name="P:Nordicsemi.PasskeyRequestEventArgs.RejectKeyRequest">
+            <summary>
+            The key request can be rejected by setting this property to true.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.OobKeyRequestEventArgs">
+            <summary>
+            Provides data for OobKeyRequest event.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.OobKeyRequestEventArgs.RequiredKeyLength">
+            <summary>
+            The required length of oob key value array.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.OobKeyRequestEventArgs.OobKey">
+            <summary>
+            The requested passkey shall be entered into this field. The value shall be given as a byte array of length 16 in little endian byte order.
+            </summary>
+            <exception cref="T:System.ArgumentException"/>
+        </member>
+        <member name="P:Nordicsemi.OobKeyRequestEventArgs.RejectKeyRequest">
+            <summary>
+            The key request can be rejected by setting this property to true.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.PipeStore">
+            <summary>
+            The pipe store defines where the data of a service and it's characteristics and descriptors is stored.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeStore.Local">
+            <summary>
+            Data is stored on local device.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeStore.Remote">
+            <summary>
+            Data is stored on remote device.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.PipeType">
+            <summary>
+            The pipe type defines the operation to be done on the data of a pipe.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeType.Transmit">
+            <summary>
+            <b>Transmit pipe.</b>
+            <para /><para />
+            Sends data to the remote device.
+            <para />
+            Local pipe action: Handle-Value Notification Sent.
+            <para />
+            Remote pipe action: Write command sent.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeType.TransmitWithAck">
+            <summary>
+            <b>Transmit with acknowledgement pipe.</b>
+            <para/><para/>
+            Sends data from application controller to the remote device. 
+            <para/>
+            Local pipe action: Handle-Value Indication Sent. 
+            Handle-value-confirmation will be routed back to the application as <see cref="E:Nordicsemi.MasterEmulator.DataReceived"/> event.
+            <para/>
+            Remote pipe action: Write Request sent
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeType.Receive">
+            <summary>
+            <b>Receive pipe.</b>
+            <para/><para/>
+            The application will receive a <see cref="E:Nordicsemi.MasterEmulator.DataReceived"/> event every time new 
+            data is received from the remote device.
+            <para></para>
+            Local pipe action: WriteCommand or WriteRequest received. If a WriteRequest is received, an acknowledgement is
+            automatically sent without intervention from the application.
+            <para/>
+            Remote pipe action: Handle-Value Notification received.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeType.ReceiveWithAck">
+            <summary>
+            <b>Receive with acknowledgement pipe.</b>
+            <para/>
+            The application controller will receive a <see cref="E:Nordicsemi.MasterEmulator.DataReceived"/> event 
+            every time new data is received from the remote device. 
+            The application must respond with <see cref="M:Nordicsemi.MasterEmulator.SendDataAck(System.Int32)"/> 
+            or <see cref="M:Nordicsemi.MasterEmulator.SendDataNack(System.Int32,System.Int32)"/> or the request will time out, 
+            causing a termination of the connection.
+            <para/>
+            Local pipe action: WriteRequest received and deferred to application. Note:
+            WriteLong (Prepare/Execute Write) will be deferred to the application when ExecuteWrite
+            has been received.
+            <para/>
+            Remote pipe action: Handle-Value Indication received.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeType.TransmitRequest">
+            <summary>
+            <b>Request transmit pipe.</b>
+            <para/><para/>
+            This pipe is only available on services that are stored locally. 
+            The application controller will receive a <see cref="E:Nordicsemi.MasterEmulator.DataRequested"/> event every time 
+            a read request is received on the pipe. The application can reject, modify or accept the response by
+            modifying the properties of the <see cref="E:Nordicsemi.MasterEmulator.DataRequested"/> event.
+            <para/>
+            Local pipe action: ReadRequest received and deferred to application. Note: ReadBlobRequest
+            does currently not support deferral, it will automatically be responded to.
+            <para/>
+            Remote pipe action: N/A
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeType.ReceiveRequest">
+            <summary>
+            <b>Request receive pipe.</b>
+            <para/><para/>
+            No data event will be generated from the host to the application controller. 
+            Data is only sent back to the application on request with <see cref="M:Nordicsemi.MasterEmulator.RequestData(System.Int32)"/>
+            <para/>
+            Local pipe action: N/A
+            <para/>
+            Remote pipe action: Read Request sent.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeType.Set">
+            <summary>
+            <b>Set pipe.</b>
+            <para /><para />
+            This pipe is only available on services that are stored locally. 
+            Data will be kept within the host controller without generating any 
+            event to the remote device. Remote device can read out the value at any time
+            <para />
+            Local pipe action: Local server value updated.
+            <para />
+            Remote pipe action: N/A
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeType.TransmitSigned">
+            <summary>
+            <b>Transmit signed pipe.</b>
+            <para /><para />
+            Sends signed data to remote store.
+            <para /><para />
+            Local pipe action: N/A
+            <para />
+            Remote pipe action: Signed write command sent.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.PipeType.ReceiveSigned">
+            <summary>
+            <b>Receive signed pipe.</b>
+            <para /><para />
+            Receives signed data to local store.
+            <para /><para />
+            Local pipe action: N/A
+            <para />
+            Remote pipe action: Signed write command received.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.IoCapabilitiesEnum">
+            <summary>
+            The input and output capabilities supported.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.IoCapabilitiesEnum.DisplayOnly">
+            <summary>
+            Display only.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.IoCapabilitiesEnum.DiplayYesNo">
+            <summary>
+            Display and keyboard with yes/no capabilities.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.IoCapabilitiesEnum.KeyboardOnly">
+            <summary>
+            Keyboard only.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.IoCapabilitiesEnum.NoInputNoOutput">
+            <summary>
+            No input or output capabilities.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.IoCapabilitiesEnum.KeyboardDisplay">
+            <summary>
+            Both keyboard and display.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.OobAvailibilityEnum">
+            <summary>
+            Availability of out-of-band key.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.OobAvailibilityEnum.OobNotAvailable">
+            <summary>
+            Out-of-band key not available.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.OobAvailibilityEnum.OobAvailable">
+            <summary>
+            Out-of-band key available.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.SecurityParameters">
+            <summary>
+            Class specifying parameters for use in security procedures.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.SecurityParameters.IoCapabilitiesDefault">
+            <summary>
+            Default IO capabilities.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.SecurityParameters.OobAvailabilityDefault">
+            <summary>
+            Default OOB availability.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.SecurityParameters.MinimumEncryptionKeySizeDefault">
+            <summary>
+            Default minimum encryption key size.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.SecurityParameters.MaximumEncryptionKeySizeDefault">
+            <summary>
+            Default maximum encryption key size.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.SecurityParameters.#ctor">
+            <summary>
+            Creates an instance of the class. All properties are set to 
+            their corresponding default values.
+            </summary>        
+        </member>
+        <member name="P:Nordicsemi.SecurityParameters.IoCapabilities">
+            <summary>
+            Supported input and output capabilities.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.SecurityParameters.OobAvailability">
+            <summary>
+            Availability of out-of-band key.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.SecurityParameters.MinimumEncryptionKeySize">
+            <summary>
+            Minimum supported encryption key size.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.SecurityParameters.MaximumEncryptionKeySize">
+            <summary>
+            Maximum supported encryption key size.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.ConnectionUpdateResponse">
+            <summary>
+            Specifies the different connection updated response values.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.ConnectionUpdateResponse.Accepted">
+            <summary>
+            Connection parameters accepted
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.ConnectionUpdateResponse.Rejected">
+            <summary>
+            Connection parameters rejected
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.CharacteristicProperties">
+            <summary>
+            Specifies the different characteristic properties. The properties are bit fields and can be combined.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.CharacteristicProperties.Broadcast">
+            <summary>
+            If set, permits broadcasts of the Characteristic Value using Characteristic Configuration Descriptor.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.CharacteristicProperties.Read">
+            <summary>
+            If set, permits reads of the Characteristic Value.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.CharacteristicProperties.WriteWithoutResponse">
+            <summary>
+            If set, permit writes of the Characteristic Value without response.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.CharacteristicProperties.Write">
+            <summary>
+            If set, permits writes of the Characteristic Value with response.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.CharacteristicProperties.Notify">
+            <summary>
+            If set, permits notifications of a Characteristic Value without acknowledgement.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.CharacteristicProperties.Indicate">
+            <summary>
+            If set, permits indications of a Characteristic Value with acknowledgement.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.CharacteristicProperties.AuthenticatedSignedWrites">
+            <summary>
+            If set, permits signed writes to the Characteristic Value.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.CharacteristicProperties.ExtendedProperties">
+            <summary>
+            If set, additional characteristic properties are defined in the Characteristic Extended Properties Descriptor.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.UsbDeviceType">
+            <summary>
+            Specifies the different usb device types for use with method <see cref="M:Nordicsemi.MasterEmulator.EnumerateUsb(Nordicsemi.UsbDeviceType)"/>.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.UsbDeviceType.MasterEmulatorNrf2739">
+            <summary>
+            nRF2739 Master Emulator device.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.UsbDeviceType.MasterEmulatorJlinkDongle">
+            <summary>
+            Segger Jlink based dongle (pca10000, pca100031)
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.UsbDeviceType.MasterEmulatorJlinkEvkit">
+            <summary>
+            Segger Jlink based evaluation kit (pca10001, pca10003)
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.UsbDeviceType.MasterEmulatorJlinkDevkit">
+            <summary>
+            Segger Jlink based development kit (pca10028)
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.UsbDeviceType.MasterEmulatorSeggerJlink">
+            <summary>
+            Any known Segger Jlink based Master Emulator device.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.UsbDeviceType.AnyMasterEmulator">
+            <summary>
+            Any known Master Emulator device.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.UsbDeviceType.AnyDevice">
+            <summary>
+            Any device that may be used as Master Emulator device.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.UsbDeviceType.MasterEmulatorPca10000">
+            <summary>
+            Obsoleted value. Use <see cref="F:Nordicsemi.UsbDeviceType.MasterEmulatorJlinkDongle"/> instead.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.UsbDeviceType.MasterEmulatorPca10001">
+            <summary>
+            Obsoleted value. Use <see cref="F:Nordicsemi.UsbDeviceType.MasterEmulatorJlinkEvkit"/> instead.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.Verbosity">
+            <summary>
+            Specifies the different log verbosity levels.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.Verbosity.Low">
+            <summary>
+            Low log verbosity.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.Verbosity.Medium">
+            <summary>
+            Medium log verbosity.
+            </summary>
+        </member>
+        <member name="F:Nordicsemi.Verbosity.High">
+            <summary>
+            High log verbosity.
+            </summary>
+        </member>
+        <member name="T:Nordicsemi.MasterEmulator">
+            <summary>
+            Provides methods to control the Master Emulator. 
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.#ctor">
+            <summary>
+            Initializes an instance of the MasterEmulator class.
+            </summary>
+            <remarks>This class is not intended to have multiple instances.</remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.#ctor(System.Object)">
+            <summary>
+            Initializes an instance of the MasterEmulator class.
+            </summary>
+            <param name="scriptEngine">Takes an existing scripting engine from a different
+            instance of MasterEmulator. See doc for <see cref="P:Nordicsemi.MasterEmulator.Engine"/>.</param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.EnumerateUsb">
+            <summary>
+            Returns available Master Emulator serial numbers.
+            </summary>
+            <returns>Enumeration of available Master Emulator serial numbers.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.EnumerateUsb(Nordicsemi.UsbDeviceType)">
+            <summary>
+            Returns the available USB device serial numbers of a given device type.
+            </summary>
+            <remarks>This overload is for allowing to filter between available Master Emulator devices.</remarks>
+            <param name="deviceType">The type of USB devices to search for.</param>
+            <returns>Enumeration of available USB device serial numbers.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.Open(System.String)">
+            <summary>
+            Opens USB connection for communication with the Master Emulator board.
+            </summary>
+            <param name="usbSerialNumber">USB serial number of the Master Emulator board.</param>
+            <remarks>The available serial numbers can be found with the <see cref="M:Nordicsemi.MasterEmulator.EnumerateUsb"/> 
+            method.
+            <para/>
+            <para/>
+            It is possible to run consecutive seesions of MasterEmulator. See <see cref="M:Nordicsemi.MasterEmulator.Close"/>.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.Close">
+            <summary>
+            Closes the current Master Emulator session.
+            </summary>
+            <remarks>After the current session has been closed with this method it is possible to
+            start a new session by calling <see cref="M:Nordicsemi.MasterEmulator.Open(System.String)"/> again.
+            <para/>
+            <para/>
+            Note: When running consecutive sessions, for instance when running test scripts, it is 
+            recommended to use <see cref="M:Nordicsemi.MasterEmulator.Close"/> and <see cref="M:Nordicsemi.MasterEmulator.Open(System.String)"/> instead of creating new instances of MasterEmulator.
+            This is because of MasterEmulator memory usage.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.Reset">
+            <summary>
+            Resets the Master Emulator hardware device.
+            </summary>
+            <remarks>The Open method must have been successfully called before calling this method. 
+            The Master Emulator hardware device is reset by toggling a hardware reset pin on the chip. 
+            The host implementation however is not reset, though any open (BTLE) 
+            connection will be terminated.</remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.Run">
+            <summary>
+            Starts the Master Emulator's internal ATT engine with the setup that was configured with the setup methods.
+            </summary>
+            <remarks>The setup procedure must have been completed before calling this method.</remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.ReadBDAddress">
+            <summary>
+            Reads the public device address of the master.
+            </summary>
+            <returns>Returns the public device address of the master.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SetBDAddress(Nordicsemi.BtDeviceAddress)">
+            <summary>
+            Sets the public device address of the master.
+            </summary>
+            <param name="deviceAddress">The public device address to set on the master.</param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.StartDeviceDiscovery">
+            <summary>
+            Starts a device discovery which scans for BTLE devices. Overloaded.
+            </summary>
+            <remarks>This call will return immediately, and discovered devices will be reported 
+            asynchronously with the event <see cref="E:Nordicsemi.MasterEmulator.DeviceDiscovered"/>. 
+            <para/>
+            Use <see cref="P:Nordicsemi.MasterEmulator.IsDeviceDiscoveryOngoing"/>
+            to check if a discovery is already in progress. 
+            <para/>
+            The discovery will run until one of the following methods are called: 
+            <see cref="M:Nordicsemi.MasterEmulator.StopDeviceDiscovery"/>, <see cref="M:Nordicsemi.MasterEmulator.Connect(Nordicsemi.BtDeviceAddress)"/>,
+            <see cref="M:Nordicsemi.MasterEmulator.Bond(Nordicsemi.SecurityParameters)"/>, <see cref="M:Nordicsemi.MasterEmulator.Reset"/>.</remarks>
+            <returns>Returns a boolean value indicating whether the call was successful.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.StartDeviceDiscovery(Nordicsemi.BtScanParameters)">
+            <summary>
+            Starts a device discovery which scans for BTLE devices. Overloaded.
+            </summary>
+            <remarks>This call will return immediately, and discovered devices will be reported 
+            asynchronously with the event <see cref="E:Nordicsemi.MasterEmulator.DeviceDiscovered"/>.
+            <para/>
+            Use <see cref="P:Nordicsemi.MasterEmulator.IsDeviceDiscoveryOngoing"/> to check if a discovery is already in progress. 
+            <para/>
+            The method will return false if there is already an ongoing device discovery.
+            <para/>
+            The discovery will run until one of the following methods are called: 
+            <see cref="M:Nordicsemi.MasterEmulator.StopDeviceDiscovery"/>, <see cref="M:Nordicsemi.MasterEmulator.Connect(Nordicsemi.BtDeviceAddress)"/>,
+            <see cref="M:Nordicsemi.MasterEmulator.Bond(Nordicsemi.SecurityParameters)"/>, <see cref="M:Nordicsemi.MasterEmulator.Reset"/>.</remarks>
+            <param name="scanParameters">The scan parameters that shall be used during the device discovery.</param>
+            <returns>Returns a boolean value indicating whether the command succeeded.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.StopDeviceDiscovery">
+            <summary>
+            Stops an ongoing device discovery.
+            </summary>
+            <remarks>
+            Use <see cref="P:Nordicsemi.MasterEmulator.IsDeviceDiscoveryOngoing"/> to check if a discovery is already in progress.
+            The method will return false if there is no ongoing device discovery.
+            </remarks>
+            <returns>Returns a boolean value indicating whether the command succeeded.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.DiscoverDevices">
+            <summary>
+            Scans for BTLE devices and return the found devices as an enumeration. Overloaded.
+            </summary>
+            <remarks>The duration of the discovery defaults to 1 second, after which the method will return.
+            Default scan parameters are ScanInterval=10ms and ScanWindow=10ms.</remarks>
+            <returns>Enumeration of the discovered devices</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.DiscoverDevices(System.Int32)">
+            <summary>
+            Scans for BTLE devices for a given duration. Overloaded.
+            </summary>
+            <param name="durationSeconds">The duration in seconds of how long to scan for devices before returning the call.
+            The minimum allowed value is 1.</param>
+            <remarks>The discovery procedure will scan for devices and return with any devices found.
+            Any AD packet data in the advertising packets will be parsed and will be part of the return value. If no devices 
+            are found, an empty enumeration is returned.
+            Default scan parameters are ScanInterval=10ms and ScanWindow=10ms.</remarks>
+            <returns>Enumeration of the discovered devices</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.DiscoverDevices(System.Int32,Nordicsemi.BtScanParameters)">
+            <summary>
+            Scans for BTLE devices for a given duration, and with a given set of scan parameters. Overloaded.
+            </summary>
+            <remarks>The discovery procedure will scan for devices and return with any devices found.
+            Any AD packet data in the advertising packets will be parsed and will be part of the return value. If no devices 
+            are found, an empty enumeration is returned.</remarks>
+            <param name="durationSeconds">The duration in seconds of how long to scan for devices before returning the call.
+            The minimum allowed value is 1 second.</param>
+            <param name="scanParameters">The scan parameters that shall be used during the device discovery.</param>
+            <returns>Enumeration of the discovered devices</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.Connect(Nordicsemi.BtDeviceAddress)">
+            <summary>
+            Attempts to make a BTLE connection with a peer device. Overloaded.
+            </summary>
+            <param name="peerAddress">Device address of the peer device to connect to.</param>
+            <returns>Returns a boolean indicating success of the connect procedure.</returns>
+            <remarks>
+            When using this overload, default connection parameters will be used:
+            ScanInterval=10ms, ScanWindow=10ms, ConnectionInterval=50ms, SlaveLatency=0, 
+            SupervisionTimeout=3000ms
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.Connect(Nordicsemi.BtDeviceAddress,Nordicsemi.BtConnectionParameters)">
+            <summary>
+            Attempts to make a BTLE connection with a peer device. Overloaded.
+            </summary>
+            <param name="peerAddress">Device address of the peer device to connect to.</param>
+            <param name="connectionParameters">Connection setup parameters</param>
+            <returns>Returns a boolean indicating success of the connect procedure.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.Disconnect">
+            <summary>
+            Ends the current BTLE connection.
+            </summary>
+            <returns>Returns a boolean indicating success of the disconnect procedure.</returns>
+            <remarks>The method call will return when the disconnect procedure has completed.</remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.Bond">
+            <summary>
+            Attempts to create a bond with the currenctly connected device.
+            </summary>
+            <returns>Returns a boolean indicating success of the bonding procedure.</returns>
+            <remarks>This overload uses default security parameters.</remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.Bond(Nordicsemi.SecurityParameters)">
+            <summary>
+            Attemps to create a bond with the currently connected device, using the given security parameters.
+            </summary>
+            <param name="securityParameters">The security parameters shall reflect the capabilities supported by the local application and device.</param>
+            <returns>Returns a boolean indicating success of the bonding procedure.</returns>
+            <remarks>The resulting security level will be the highest level supported by both sides.</remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.RefreshKeys">
+            <summary>
+            Attempts to perform key refresh for the pairing keys of the current connection.
+            </summary>
+            <returns>Returns a boolean to indicate the status of the procedure.</returns>
+            <remarks>
+            It is required that a bond exists with the connected device before
+            calling this method.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.UpdateConnectionParameters(Nordicsemi.BtConnectionParameters)">
+            <summary>
+            Attempts to update the parameters of an existing connection.
+            </summary>
+            <param name="connectionParameters">The parameters to update the existing connection with.</param>
+            <remarks>The Master Emulator must be in a connection when this method is called.
+            <para/>
+            The parameters ScanInterval and ScanWindow of the <see cref="T:Nordicsemi.BtConnectionParameters"/> 
+            object are not used by the connection parameters update procedure.</remarks>
+            <returns>Returns true if the update procedure was successful.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.UpdateChannelMap(System.Int64)">
+            <summary>
+            Attempts to update the channel map of an existing connection.
+            </summary>
+            <param name="channelMap">The channel map.</param>
+            <returns>Returns true if the update procedure was successful.</returns>
+            <remarks>The channel map value's 37 least significant bits represent the 37 channels
+            used for BLE transmission. If a bit is unset it means that the channel should not be
+            used. At least one channel index must be set (minimum value is 1). If all channels
+            are set the value is 0x1FFFFFFFFF.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SetupAddService(Nordicsemi.BtUuid,Nordicsemi.PipeStore)">
+            <summary>
+            Add a service to the pipe setup.
+            </summary>
+            <param name="serviceUuid">The UUID of the service to add.</param>
+            <param name="pipeStore">The pipe store describes where the service is implemented, either remote of locally.</param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SetupAddService(Nordicsemi.BtUuid,Nordicsemi.PipeStore,System.Int32)">
+            <summary>
+            Add a service to the pipe setup.
+            </summary>
+            <param name="serviceUuid">The UUID of the service to add.</param>
+            <param name="pipeStore">The pipe store describes where the service is implemented, 
+            either remote of locally.</param>
+            <param name="handleHint">An ATT Handle value that lies within the StartHandle and EndHandle range of 
+            the service. Only for use with <see cref="F:Nordicsemi.PipeStore.Remote"/> PipeStore.</param>
+            <remarks>The handle hint allows <see cref="M:Nordicsemi.MasterEmulator.DiscoverPipes"/> to 
+            differentiate between services of identical UUIDs. If a handle hint is specified, a 
+            pipe will not be matched with a handle unless the service's range contains the 
+            handle hint value. Handle hint is only needed if a pipe cannot be matched with the 
+            correct handle because there exist multiple identical service-characteristic pairs.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SetupAddCharacteristicDefinition(Nordicsemi.BtUuid,System.Int32,System.Byte[])">
+            <summary>
+            Adds a characteristic definition to the pipe setup.
+            </summary>
+            <param name="characteristicUuid">The UUID of the characteristic to add.</param>
+            <param name="maxDataLength">The max length of the data field of the characteristic value.</param>
+            <param name="data">The data of the characteristic value at startup. This field is only considered for local store.</param>
+            <remarks>The characteristic definition will be added to the last service that 
+            was added with the AddService method. It is not allowed to use call AddCharacteristicDefinition without first having called 
+            AddService.
+            <para/><para/>
+            A local characteristic value will be given WRITE property if the pipe is of type <see cref="F:Nordicsemi.PipeType.Transmit"/> 
+            or <see cref="F:Nordicsemi.PipeType.TransmitWithAck"/>.
+            <para/><para/>
+            A local characteristic value will be given READ property if the data argument has length larger than zero, 
+            or if the pipe is of type <see cref="F:Nordicsemi.PipeType.Set"/>
+            <para/><para/>Note also that it is possible to create multiple characteristics of the same UUID. This can be done in one of two ways:
+            <para/>
+            1. Specify a different namespace or description in the characteristic format descriptors. See <see cref="M:Nordicsemi.MasterEmulator.SetupAddCharacteristicDescriptor(Nordicsemi.BtUuid,System.Int32,System.Byte[])"/><para/>
+            2. If working with a HID application, the data specified in the HID Report Reference descriptors can be used to differentiate the characteristics. See <see cref="M:Nordicsemi.MasterEmulator.SetupAddCharacteristicDescriptor(Nordicsemi.BtUuid,System.Int32,System.Byte[])"/><para/>
+            <para/><para/>
+            See also <see cref="M:Nordicsemi.MasterEmulator.SetupAddService(Nordicsemi.BtUuid,Nordicsemi.PipeStore,System.Int32)"/> on how to differentiate services with identical UUIDs values.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SetupAddCharacteristicDescriptor(Nordicsemi.BtUuid,System.Int32,System.Byte[])">
+            <summary>
+            Adds a characteristic descriptor to the pipe setup.
+            </summary>
+            <param name="descriptorUuid">The UUID of the characteristic descriptor to add.</param>
+            <param name="maxDataLength">The max data length of the data field of the descriptor.</param>
+            <param name="data">The data field of the descritor. This field is only considered for local store.</param>
+            <remarks>The descriptor will be added to the last characteristic definition that was added with the 
+            AddCharacteristicDefinition method. It is not allowed to call AddCharacteristicDescriptor without first having called
+            AddCharacteristicDefinition.</remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SetupAssignPipe(Nordicsemi.PipeType)">
+            <summary>
+            Assigns a pipe to the attribute that was last added.
+            </summary>
+            <param name="pipeType">The pipe type states the operation of the pipe.</param>
+            <returns>Returns the pipe number number that was assigned to the characteristic value 
+            or characteristic descriptor. </returns>
+            <remarks>
+            A characteristic definition or a characteristic descriptor must have been 
+            added with <see cref="M:Nordicsemi.MasterEmulator.SetupAddCharacteristicDefinition(Nordicsemi.BtUuid,System.Int32,System.Byte[])"/> or 
+            <see cref="M:Nordicsemi.MasterEmulator.SetupAddCharacteristicDescriptor(Nordicsemi.BtUuid,System.Int32,System.Byte[])"/> prior to calling this method.
+            <para/>
+            The pipe types have different interpretation 
+            based on whether the pipe store is set to remote or local.
+            <para/>
+            See <see cref="T:Nordicsemi.PipeType"/> documentation.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.DiscoverPipes">
+            <summary>
+            DiscoverPipes operation includes a GATT service discovery with the purpose of mapping 
+            the remote pipes to the corresponding ATT handles of the peer device. </summary>
+            <returns>Returns true if all pipes were discovered successfully.</returns>
+            <remarks>In order to receive notifications or indications on a pipe, 
+            use <see cref="M:Nordicsemi.MasterEmulator.OpenRemotePipe(System.Int32)"/> or <see cref="M:Nordicsemi.MasterEmulator.OpenAllRemotePipes"/></remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.DiscoverServices">
+            <summary>
+            Discover and return a dump of all attributes on peer device.
+            </summary>
+            <returns>Returns a dump of all discovered attributes.</returns>
+            <remarks>
+            The purpose of this command is to provide a way to get an 
+            overview of what services and characteristics the peer device supports.
+            <para/><para/>
+            Note that the retrieved result can not be used to further read and
+            write the peer attributes. In order to do that use the Pipe related commands:
+            <see cref="M:Nordicsemi.MasterEmulator.DiscoverPipes"/>, 
+            <see cref="M:Nordicsemi.MasterEmulator.SendData(System.Int32,System.Byte[])"/>, 
+            <see cref="M:Nordicsemi.MasterEmulator.RequestData(System.Int32)"/>
+            <para/><para/>
+            This method does not require a valid PipeSetup in order to be used, it will retrieve
+            all remote attributes even if no PipeSetup has been configured.
+            <para/><para/>
+            Note: The recommended way in this API of discovering remote services is to configure a 
+            PipeSetup and call <see cref="M:Nordicsemi.MasterEmulator.DiscoverPipes"/>.
+            </remarks>
+            <example>This sample shows how DiscoverServices method can be used.
+            <code>
+            var masterEmulator = new MasterEmulator();
+            ...
+            var attributes = masterEmulator.DiscoverServices()
+            foreach (var item in attributes)
+            {
+               Trace.WriteLine(item.ToString());
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.OpenRemotePipe(System.Int32)">
+            <summary>
+            Opens a pipe, enabling it to receive notifications or indications from the peer device.
+            </summary>
+            <remarks>Only pipes that support it can be opened. The pipes that can be opened are <see cref="F:Nordicsemi.PipeType.Receive"/> remote
+            and <see cref="F:Nordicsemi.PipeType.ReceiveWithAck"/> remote
+            <para/> <para/>
+            This method will open only the pipe specified. For opening of all eligible pipes, use <see cref="M:Nordicsemi.MasterEmulator.OpenAllRemotePipes"/>. 
+            <para/> <para/>
+            Opening of pipes translates to setting the CCCD (Client Characteristic Configuration) of a characteristic.
+            </remarks>
+            <param name="pipeNumber">The pipe number of the pipe to open.</param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.CloseRemotePipe(System.Int32)">
+            <summary>
+            Closes a pipe, disabling it to receive notifications or indications from the peer device.
+            </summary>
+            <remarks>Only pipes that support it can be opened and closed. The pipes that can be opened and closed are <see cref="F:Nordicsemi.PipeType.Receive"/> remote
+            and <see cref="F:Nordicsemi.PipeType.ReceiveWithAck"/> remote
+            <para/> <para/>
+            Opening and closing of pipes translates to setting the CCCD (Client Characteristic Configuration) of a characteristic.
+            </remarks>
+            <param name="pipeNumber">The pipe number of the pipe to close.</param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.OpenAllRemotePipes">
+            <summary>
+            Opens all remote pipes that are eligible for opening.
+            </summary>
+            <remarks>See also <see cref="M:Nordicsemi.MasterEmulator.OpenRemotePipe(System.Int32)"/>.</remarks>
+            <returns>Returns a list of pipe numbers for the pipes that were successfully opened.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.GetCharacteristicProperties(System.Int32)">
+            <summary>
+            Returns the characteristic properties for the characteristic declaration corresponding to a given pipe.
+            </summary>
+            <param name="pipeNumber">The pipe number of the pipe to get the characteristic properties for.</param>
+            <returns>Returns the characteristic properties for the characteristic declaration corresponding to the given pipe.</returns>
+            <remarks>For local pipes, the characteristic properties can be queried already directly after pipe setup.
+            For remote pipes, the properties can only be queried after a pipe discovery has been done.</remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SendData(System.Int32,System.Byte[])">
+            <summary>
+            Sends data to a peer device across a pipe.
+            </summary>
+            <param name="pipeNumber">The pipe to send the data across. The pipe must support the operation.</param>
+            <param name="data">The data to send. The length of the data must not exceed the max length of the 
+            target characteristic or descriptor.</param>
+            <returns>Returns boolean to indicate success or failure.</returns>
+            <remarks>The pipe types that support this operation are <see cref="F:Nordicsemi.PipeType.Transmit"/> and <see cref="F:Nordicsemi.PipeType.TransmitWithAck"/>
+            <para/>
+            If the length of the data is more than the max payload length for one packet (20 bytes), the payload
+            will be split up and sent with a sequence of AttPrepareWrite and AttExecuteWrite requests.
+            </remarks>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SetLocalData(System.Int32,System.Byte[])">
+            <summary>
+            This method updates the value of a characteristic value or characteristic 
+            descriptor that is stored locally on the Master Emulator server.
+            </summary>
+            <remarks>This method can be called for all types of pipes as long as the data is stored locally.
+            Notifications or indications will not be sent out.</remarks>
+            <param name="pipeNumber">The pipe number of the pipe to update.</param>
+            <param name="data">The data to update the pipe with.</param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.RequestData(System.Int32)">
+            <summary>
+            Requests data from a peer device across a pipe.
+            </summary>
+            <param name="pipeNumber">The pipe to request a read on.</param>
+            <remarks>The pipe must be of type <see cref="F:Nordicsemi.PipeType.ReceiveRequest"/>.</remarks>
+            <returns>The returned data of the request procedure.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.RequestLongData(System.Int32)">
+            <summary>
+            Requests long data from a peer device across a pipe.
+            </summary>
+            <param name="pipeNumber">The pipe to request a read on.</param>
+            <remarks>The pipe must be of type <see cref="F:Nordicsemi.PipeType.ReceiveRequest"/>.
+            <para/>
+            The Att Read Blob procedure is used for requesting the data. If the peer does not support this procedure
+            an exception will be thrown.
+            </remarks>
+            <returns>The returned data of the request procedure.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SendDataAck(System.Int32)">
+             <summary>
+             Sends an acknowledgement for a ReceiveWithAck pipe.
+             </summary>
+             <remarks>        
+             This command shall be used in conjunction with the DataReceived event. 
+             When data is received on pipe that is setup to be a receive pipe with acknowledgement 
+             the application should respond back with either this method or <see cref="M:Nordicsemi.MasterEmulator.SendDataNack(System.Int32,System.Int32)"/>. 
+             When this method is called, the Master Emulator will send a confirmation back to the peer device. 
+             This confirmation will be either Handle Value Confirmation or Write Response 
+             depending on whether the data is stored remotely or locally.
+             <para/>
+             For the case of Execute Write Request this event will be called for every pipe
+             that is being requested written to. All events must be acked before an Execute Write 
+             Response is sent. If one or more of the event are responded with 
+             <see cref="M:Nordicsemi.MasterEmulator.SendDataNack(System.Int32,System.Int32)"/> then an Error Response is sent. The error code of the first 
+             Nack will be used in the Error Response.
+            </remarks>
+             <param name="pipeNumber">The pipe number of the pipe to send an acknowledgement for.</param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SendDataNack(System.Int32,System.Int32)">
+            <summary>
+            Sends a negative aknowledgement for a ReceiveWithAck pipe.
+            </summary>
+            <remarks>
+            This command shall be used in conjunction with the DataReceivedEvent. 
+            When data is received on a pipe that is setup to be a receive pipe with 
+            acknowledgment the application can respond back with this method or 
+            <see cref="M:Nordicsemi.MasterEmulator.SendDataAck(System.Int32)"/>.
+            </remarks>
+            <param name="pipeNumber">The pipe number of the pipe to send a nack for.</param>
+            <param name="errorCode">An application specified error code that describes the reason 
+            for the nack. Valid range is 0x80 to 0xFF.</param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.SendConnectionUpdateResponse(System.Int32,Nordicsemi.ConnectionUpdateResponse)">
+            <summary>
+            Sends a Connection Parameter Update Response.
+            </summary>
+            <remarks>The identifier shall be the same as the one that was received with the ConnectionUpdateRequest event.</remarks>
+            <param name="identifier">An identifier used for differentiation in case of multiple requests.</param>
+            <param name="response">A resonse value stating whether the request is accepted or rejected.</param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.DeleteBondInformation">
+            <summary>
+            Deletes information (i.e. keys and addresse) related to established bonds.
+            </summary>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.GetBondInformation">
+            <summary>
+            Returns the bonding information serialized as a string. The bonding state can be restored again
+            by calling <see cref="M:Nordicsemi.MasterEmulator.RestoreBondInformation(System.String)"/> with the bond information string as input.
+            </summary>
+            <returns>Returns the bonding state as a string.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.RestoreBondInformation(System.String)">
+            <summary>
+            Restores the bonding state from a previously stored state.
+            </summary>
+            <param name="bondInformation">Previously stored state, see <see cref="M:Nordicsemi.MasterEmulator.GetBondInformation"/></param>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.GetLogFilePath">
+            <summary>
+            Returns the path of the log file.
+            </summary>
+            <returns>Returns the path of the log file.</returns>
+        </member>
+        <member name="M:Nordicsemi.MasterEmulator.ReadRssi">
+            <summary>
+            Reads the RSSI (received signal strength indicator).
+            </summary>
+            <remarks>
+            The RSSI metric is an absolute receiver signal strength value in dBm.
+            <para></para>
+            If the command is not supported by the controller version, the value 0 is returned.
+            </remarks>
+            <returns>RSSI value in dBm.</returns>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.LogMessage">
+            <summary>
+            Occurs when a log message is available.
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.DataReceived">
+            <summary>
+            Occurs when data has been received from the peer device.
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.DataRequested">
+            <summary>
+            Occurs when a read request on a characteristic value has been received from the peer device. 
+            Note that this event will only get called if the <see cref="F:Nordicsemi.PipeType.TransmitRequest"/> pipe has been assigned
+            to the characterstic.
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.DeviceDiscovered">
+            <summary>
+            Occurs when a device has been discovered in device discovery, i.e. when an advertising
+            packet has been received. 
+            Note: The application should process the event as quickly as possible in order not to 
+            block the sending thread. 
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.Connected">
+            <summary>
+            Occurs when a connection has been established with a peer device.
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.Disconnected">
+            <summary>
+            Occurs when a connection to a peer device has been lost.
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.ConnectionUpdateRequest">
+            <summary>
+            Occurs when a connection update request has been received from the peer device.
+            </summary>
+            <remarks>In order to send a connection update response, 
+            use <see cref="M:Nordicsemi.MasterEmulator.SendConnectionUpdateResponse(System.Int32,Nordicsemi.ConnectionUpdateResponse)"/>.
+            In order to do an actual update of the connection parameters, use <see cref="M:Nordicsemi.MasterEmulator.UpdateConnectionParameters(Nordicsemi.BtConnectionParameters)"/></remarks>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.SecurityRequest">
+            <summary>
+            Occurs when a security request has been received from the peer device.
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.PasskeyRequest">
+            <summary>
+            Occurs when the security procedure requires a passkey from the application.
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.OobKeyRequest">
+            <summary>
+            Occurs when the security procedure requires an out-of-band key from the application.
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.DisplayPasskey">
+            <summary>
+            Occurs when the security procedure requests the application to display a passkey to the end user.
+            </summary>
+        </member>
+        <member name="E:Nordicsemi.MasterEmulator.PipeError">
+            <summary>
+            Occurs when there has been an error related to a pipe transaction.
+            </summary>
+            <remarks>Errors during a synchronous method call will normally cause an exception to be thrown.</remarks>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.IsOpen">
+            <summary>
+            Gets a value indicating whether the Master Emulator has been successfully opened with <see cref="M:Nordicsemi.MasterEmulator.Open(System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.IsRunning">
+            <summary>
+            Gets a value indicating whether the Master Emulator has been successfully set in run mode with <see cref="M:Nordicsemi.MasterEmulator.Run"/>.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.IsDeviceDiscoveryOngoing">
+            <summary>
+            Gets a value indicating whether the Master Emulator has a device discovery in progress. See <see cref="M:Nordicsemi.MasterEmulator.StartDeviceDiscovery"/>.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.IsConnected">
+            <summary>
+            Gets a value indicating whether the Master Emulator is currently in a BTLE connection.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.IsLinkEncrypted">
+            <summary>
+            Gets a value indicating whether the current link is in an encrypted state.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.IsEncryptionOngoing">
+            <summary>
+            Gets a value indicating whether there is currently an ongoing encryption in progress on a background thread.
+            </summary>
+            <remarks>Sending of ATT packets while an encryption process is ongoing is not allowed. By using this property 
+            it is possible check and avoid an ongoing encryption.</remarks>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.LogVerbosity">
+            <summary>
+            Set the log file verbosity level.
+            </summary>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.SerialPortBaudRate">
+            <summary>
+            Gets or sets the baud rate for the Master Emulator device serial port transport.
+            </summary>
+            <remarks>This setting only applies for Master Emulator devices that uses
+            serial port transport (e.g. pca10000, pca10001). Make sure the value corresponds
+            to the value being used in the Master Emulator firmware (MEFW).
+            <para/><para/>
+            Default baud rate value is 1000000 (1Mbps).
+            <para/>
+            Typical baud rate values used in MEFW are 115200 and 1000000.
+            </remarks>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.DataBufferWaitTimeoutMs">
+            <summary>
+            Gets or sets the data buffer timeout value in milliseconds.
+            </summary>
+            <remarks>
+            The data buffer timeout value sets maximum time the Master Emulator DLL should wait on
+            available ACL data buffers before giving up sending a packet.
+            <para/><para/>
+            A TimeoutException will be thrown if there are no available buffers within the timeout.
+            </remarks>
+        </member>
+        <member name="P:Nordicsemi.MasterEmulator.Engine">
+            <summary>
+            Returns the internal scripting engine of Master Emulator.
+            </summary>
+            <remarks>
+            When creating many successive instances of MasterEmulator, the memory usage can be
+            reduced by reusing the scripting engine. To reuse the scripting engine, pass the engine 
+            object from one instance of Master Emulator to the constructor of MasterEmulator when 
+            creating a new instance.
+            </remarks>
+        </member>
+    </members>
+</doc>

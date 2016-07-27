@@ -319,7 +319,6 @@ namespace ChronosOTAandTest
                     {
                         deviceName = "(" + deviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
                             deviceInfo[DeviceInfoType.CompleteLocalName] + " - " + listOfDevices[i].DeviceAddress.Value;
-                        //if ((deviceInfo[DeviceInfoType.CompleteLocalName] == filterString) || (deviceInfo[DeviceInfoType.CompleteLocalName] == filterString2))
                         if (matchFilter(deviceInfo[DeviceInfoType.CompleteLocalName]))
                         {
                             discoveredDevicesList.Add(deviceName);
@@ -329,7 +328,6 @@ namespace ChronosOTAandTest
                     {
                         deviceName = "(" + deviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
                             deviceInfo[DeviceInfoType.ShortenedLocalName] + " - " + listOfDevices[i].DeviceAddress.Value;
-                        //if ((deviceInfo[DeviceInfoType.ShortenedLocalName] == filterString) || (deviceInfo[DeviceInfoType.ShortenedLocalName] == filterString2))
                         if (matchFilter(deviceInfo[DeviceInfoType.ShortenedLocalName]))
                         {
                             discoveredDevicesList.Add(deviceName);
@@ -372,11 +370,11 @@ namespace ChronosOTAandTest
             int visibleItems = logListBox.ClientSize.Height / logListBox.ItemHeight;
             logListBox.TopIndex = Math.Max(logListBox.Items.Count - visibleItems + 1, 0);
         }
-        
+
         bool matchFilter(string inputString)
         {
             int i = 0;
-            for (i = 0; i<filterStringList.Count; i++)
+            for (i = 0; i < filterStringList.Count; i++)
             {
                 if (inputString == filterStringList[i])
                 {
@@ -408,9 +406,10 @@ namespace ChronosOTAandTest
                 if (!isOpen)
                 {
                     BLEMasterEmulator.Open(usbSerial.Substring(0, usbSerial.IndexOf(" ")));
+                    Thread.Sleep(500);
                     BLEMasterEmulator.Reset();
                     PerformPipeSetup();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(500);
                     BLEMasterEmulator.Run();
                     isOpen = true;
                 }
@@ -612,7 +611,6 @@ namespace ChronosOTAandTest
         {
             BLEMasterEmulator.StopDeviceDiscovery();
             if (BLEMasterEmulator.IsConnected) BLEMasterEmulator.Disconnect();
-
             base.OnFormClosing(e);
         }
 
@@ -626,5 +624,4 @@ namespace ChronosOTAandTest
         }
         #endregion
     }
-
 }

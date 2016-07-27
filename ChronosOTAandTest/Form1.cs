@@ -304,7 +304,6 @@ namespace ChronosOTAandTest
                 int limit = 0;
                 if (listOfDevices.Count > 28)
                 {
-                    //limit = 28;
                     limit = listOfDevices.Count;
                 }
                 else
@@ -338,8 +337,6 @@ namespace ChronosOTAandTest
                         deviceName = "(" + deviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
                             listOfDevices[i].DeviceAddress.Value;
                     }
-
-                    //discoveredDevicesList.Add(deviceName);
                 }
                 discoveredDevicesList.ResetBindings(false);
             });
@@ -602,6 +599,10 @@ namespace ChronosOTAandTest
                     string dummyString = "Serial number: " + System.Text.Encoding.ASCII.GetString(received);
                     serialNumberLabel.Text = dummyString;
                 }
+                else
+                {
+                    logList.Add("Serial edit command failed to be sent");
+                }
             }
         }
         #endregion
@@ -613,14 +614,19 @@ namespace ChronosOTAandTest
             if (BLEMasterEmulator.IsConnected) BLEMasterEmulator.Disconnect();
             base.OnFormClosing(e);
         }
-
         #endregion
 
         #region testing functions
-
         private void sleepModeButton_Click(object sender, EventArgs e)
         {
-            BLEMasterEmulator.SendData(pipeNumberSerialAndSleepMode, sleepModeCommand);
+            if (BLEMasterEmulator.SendData(pipeNumberSerialAndSleepMode, sleepModeCommand))
+            {
+                logList.Add("Sleep mode command sent successfully");
+            }
+            else
+            {
+                logList.Add("Sleep mode command failed to be sent");
+            }
         }
         #endregion
     }

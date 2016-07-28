@@ -584,7 +584,7 @@ namespace ChronosOTAandTest
             byte[] input = Encoding.ASCII.GetBytes(serialNumberInputTextbox.Text);
             if (input.Length < 10)
             {
-                MessageBox.Show("Please input a serial number of 10 characters");
+                MessageBox.Show("Please input a serial number of exactly 10 characters");
             }
             else
             {

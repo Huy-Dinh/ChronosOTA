@@ -46,6 +46,8 @@
             this.sendSerialNumberButton = new System.Windows.Forms.Button();
             this.serialNumberInputTextbox = new System.Windows.Forms.TextBox();
             this.sleepModeButton = new System.Windows.Forms.Button();
+            this.sortButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // discoveredDeviceListBox
@@ -126,7 +128,7 @@
             this.startStopScanButton.Location = new System.Drawing.Point(18, 419);
             this.startStopScanButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.startStopScanButton.Name = "startStopScanButton";
-            this.startStopScanButton.Size = new System.Drawing.Size(182, 35);
+            this.startStopScanButton.Size = new System.Drawing.Size(102, 35);
             this.startStopScanButton.TabIndex = 7;
             this.startStopScanButton.Text = "Start Scan";
             this.startStopScanButton.UseMnemonic = false;
@@ -135,10 +137,10 @@
             // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(207, 419);
+            this.connectButton.Location = new System.Drawing.Point(128, 419);
             this.connectButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(220, 35);
+            this.connectButton.Size = new System.Drawing.Size(95, 35);
             this.connectButton.TabIndex = 8;
             this.connectButton.Text = "Connect";
             this.connectButton.UseMnemonic = false;
@@ -219,11 +221,37 @@
             this.sleepModeButton.UseVisualStyleBackColor = true;
             this.sleepModeButton.Click += new System.EventHandler(this.sleepModeButton_Click);
             // 
+            // sortButton
+            // 
+            this.sortButton.Location = new System.Drawing.Point(231, 419);
+            this.sortButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sortButton.Name = "sortButton";
+            this.sortButton.Size = new System.Drawing.Size(95, 35);
+            this.sortButton.TabIndex = 17;
+            this.sortButton.Text = "Sort";
+            this.sortButton.UseMnemonic = false;
+            this.sortButton.UseVisualStyleBackColor = true;
+            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(332, 419);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(95, 35);
+            this.clearButton.TabIndex = 18;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseMnemonic = false;
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 714);
+            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.sortButton);
             this.Controls.Add(this.sleepModeButton);
             this.Controls.Add(this.serialNumberInputTextbox);
             this.Controls.Add(this.sendSerialNumberButton);
@@ -271,6 +299,8 @@
         private System.Windows.Forms.Button sendSerialNumberButton;
         private System.Windows.Forms.TextBox serialNumberInputTextbox;
         private System.Windows.Forms.Button sleepModeButton;
+        private System.Windows.Forms.Button sortButton;
+        private System.Windows.Forms.Button clearButton;
     }
 
 }

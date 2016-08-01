@@ -48,6 +48,10 @@ namespace ChronosOTAandTest
         bool isConnected;
         bool isOpen;
         bool isScanning;
+
+        // Mutex for variables
+        private static Mutex listOfDevicesMutex = new Mutex();
+        private static Mutex discoveredDeviceListMutex = new Mutex();
         #endregion
 
         public Form1()
@@ -290,55 +294,67 @@ namespace ChronosOTAandTest
         {
             this.BeginInvoke((MethodInvoker)delegate ()
             {
+                int existingAt = 0;
+                int displayedAt = -1;
+                listOfDevicesMutex.WaitOne();
                 for (int i = 0; i < listOfDevices.Count; i++)
                 {
                     if (listOfDevices[i].DeviceAddress == e.Value.DeviceAddress)
                     {
                         listOfDevices.RemoveAt(i);
+                        displayedAt = findDisplayIndex(e.Value);
+                        existingAt = i;
                     }
                 }
                 listOfDevices.Add(e.Value);
-                listOfDevices = listOfDevices.OrderByDescending(o => Int32.Parse(o.DeviceInfo[DeviceInfoType.Rssi])).ToList();
-                discoveredDevicesList.Clear();
+                listOfDevicesMutex.ReleaseMutex();
+                //listOfDevices = listOfDevices.OrderByDescending(o => Int32.Parse(o.DeviceInfo[DeviceInfoType.Rssi])).ToList();
 
-                int limit = 0;
-                if (listOfDevices.Count > 28)
+                //discoveredDevicesList.Clear();
+
+                string deviceName = "";
+                IDictionary<DeviceInfoType, string> deviceInfo = e.Value.DeviceInfo;
+                discoveredDeviceListMutex.WaitOne();
+                if (deviceInfo.ContainsKey(DeviceInfoType.CompleteLocalName))
                 {
-                    limit = listOfDevices.Count;
+                    deviceName = "(" + deviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
+                        deviceInfo[DeviceInfoType.CompleteLocalName] + " - " + e.Value.DeviceAddress.Value.ToString();
+                    if (matchFilter(deviceInfo[DeviceInfoType.CompleteLocalName]))
+                    {
+                        if (displayedAt >= 0)
+                        {
+                            discoveredDevicesList[displayedAt] = deviceName;
+                        }
+                        else
+                        {
+                            discoveredDevicesList.Add(deviceName);
+                        }
+                    }
+                }
+                else if (deviceInfo.ContainsKey(DeviceInfoType.ShortenedLocalName))
+                {
+                    deviceName = "(" + deviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
+                        deviceInfo[DeviceInfoType.ShortenedLocalName] + " - " + e.Value.DeviceAddress.Value.ToString();
+                    if (matchFilter(deviceInfo[DeviceInfoType.ShortenedLocalName]))
+                    {
+                        if (displayedAt >= 0)
+                        {
+                            discoveredDevicesList[displayedAt] = deviceName;
+                        }
+                        else
+                        {
+                            discoveredDevicesList.Add(deviceName);
+                        }
+                    }
                 }
                 else
                 {
-                    limit = listOfDevices.Count;
+                    //deviceName = "(" + deviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
+                    //    listOfDevices[i].DeviceAddress.Value;
                 }
-                for (int i = 0; i < limit; i++)
-                {
-                    string deviceName = "";
-                    IDictionary<DeviceInfoType, string> deviceInfo = listOfDevices[i].DeviceInfo;
-                    if (deviceInfo.ContainsKey(DeviceInfoType.CompleteLocalName))
-                    {
-                        deviceName = "(" + deviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
-                            deviceInfo[DeviceInfoType.CompleteLocalName] + " - " + listOfDevices[i].DeviceAddress.Value;
-                        if (matchFilter(deviceInfo[DeviceInfoType.CompleteLocalName]))
-                        {
-                            discoveredDevicesList.Add(deviceName);
-                        }
-                    }
-                    else if (deviceInfo.ContainsKey(DeviceInfoType.ShortenedLocalName))
-                    {
-                        deviceName = "(" + deviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
-                            deviceInfo[DeviceInfoType.ShortenedLocalName] + " - " + listOfDevices[i].DeviceAddress.Value;
-                        if (matchFilter(deviceInfo[DeviceInfoType.ShortenedLocalName]))
-                        {
-                            discoveredDevicesList.Add(deviceName);
-                        }
-                    }
-                    else
-                    {
-                        deviceName = "(" + deviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
-                            listOfDevices[i].DeviceAddress.Value;
-                    }
-                }
+
                 discoveredDevicesList.ResetBindings(false);
+                discoveredDeviceListMutex.ReleaseMutex();
             });
         }
         #endregion
@@ -379,6 +395,22 @@ namespace ChronosOTAandTest
                 }
             }
             return false;
+        }
+
+        int findDisplayIndex(BtDevice inputBtDevice)
+        {
+            string tempString = "";
+          
+            for (int i = 0; i < discoveredDevicesList.Count; i++)
+            {
+                tempString = discoveredDevicesList[i].ToString();
+                tempString = tempString.Substring(tempString.Length - 12);
+                if (tempString == inputBtDevice.DeviceAddress.ToString())
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
         #endregion
 
@@ -439,13 +471,12 @@ namespace ChronosOTAandTest
         private void startStopScanButton_Click(object sender, EventArgs e)
         {
             BtScanParameters scanParameter = new BtScanParameters();
-            scanParameter.ScanWindowMs = 50;
-            scanParameter.ScanIntervalMs = 50;
+            scanParameter.ScanWindowMs = 200;
+            scanParameter.ScanIntervalMs = 1000;
             scanParameter.ScanType = BtScanType.ActiveScanning;
 
             if (!isScanning)
             {
-                listOfDevices.Clear();
                 bool check = BLEMasterEmulator.StartDeviceDiscovery(scanParameter);
                 if (check)
                 {
@@ -458,20 +489,20 @@ namespace ChronosOTAandTest
                     logList.Add("If that doesn't work, disconnect and reconnect the dongle then restart the application");
                     ScrollLogToBottom();
                 }
-                connectButton.Enabled = false;
+                //connectButton.Enabled = false;
             }
             else
             {
                 BLEMasterEmulator.StopDeviceDiscovery();
                 isScanning = false;
                 startStopScanButton.Text = "Start scan";
-                connectButton.Enabled = true;
+                //connectButton.Enabled = true;
             }
         }
 
         private void discoveredDeviceListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((discoveredDeviceListBox.SelectedItems.Count > 0) && (!isScanning))
+            if ((discoveredDeviceListBox.SelectedItems.Count > 0))
             {
                 OTAButton.Enabled = true;
                 connectButton.Enabled = true;
@@ -526,6 +557,13 @@ namespace ChronosOTAandTest
 
         private void connectButton_Click(object sender, EventArgs e)
         {
+            if (isScanning)
+            {
+                BLEMasterEmulator.StopDeviceDiscovery();
+                isScanning = false;
+                startStopScanButton.Text = "Start scan";
+                connectButton.Enabled = true;
+            }
             if (!isConnected)
             {
                 string targetAddress = discoveredDeviceListBox.SelectedItem.ToString();
@@ -605,6 +643,56 @@ namespace ChronosOTAandTest
                 }
             }
         }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            discoveredDeviceListMutex.WaitOne();
+            listOfDevicesMutex.WaitOne();
+
+            listOfDevices.Clear();
+            discoveredDevicesList.Clear();
+
+            listOfDevicesMutex.ReleaseMutex();
+            discoveredDeviceListMutex.ReleaseMutex();
+        }
+
+        private void sortButton_Click(object sender, EventArgs e)
+        {
+            discoveredDeviceListMutex.WaitOne();
+            listOfDevicesMutex.WaitOne();
+
+            if (listOfDevices.Count > 0)
+            {
+                listOfDevices = listOfDevices.OrderByDescending(o => Int32.Parse(o.DeviceInfo[DeviceInfoType.Rssi])).ToList();
+
+                discoveredDevicesList.Clear();
+                for (int i = 0; i < listOfDevices.Count; i++)
+                {
+                    string deviceName = "";
+                    if (listOfDevices[i].DeviceInfo.ContainsKey(DeviceInfoType.CompleteLocalName))
+                    {
+                        deviceName = "(" + listOfDevices[i].DeviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
+                            listOfDevices[i].DeviceInfo[DeviceInfoType.CompleteLocalName] + " - " + listOfDevices[i].DeviceAddress.ToString();
+                        if (matchFilter(listOfDevices[i].DeviceInfo[DeviceInfoType.CompleteLocalName]))
+                        {
+                            discoveredDevicesList.Add(deviceName);
+                        }
+                    }
+                    else if (listOfDevices[i].DeviceInfo.ContainsKey(DeviceInfoType.ShortenedLocalName))
+                    {
+                        deviceName = "(" + listOfDevices[i].DeviceInfo[DeviceInfoType.Rssi].ToString() + ") " +
+                            listOfDevices[i].DeviceInfo[DeviceInfoType.ShortenedLocalName] + " - " + listOfDevices[i].DeviceAddress.ToString();
+                        if (matchFilter(listOfDevices[i].DeviceInfo[DeviceInfoType.ShortenedLocalName]))
+                        {
+                            discoveredDevicesList.Add(deviceName);
+                        }
+                    }
+                }
+            }
+            discoveredDeviceListMutex.ReleaseMutex();
+            listOfDevicesMutex.ReleaseMutex();
+        }
+
         #endregion
 
         #region systemEventOverride
@@ -629,5 +717,6 @@ namespace ChronosOTAandTest
             }
         }
         #endregion
+
     }
 }

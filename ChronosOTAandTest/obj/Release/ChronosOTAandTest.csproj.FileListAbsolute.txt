@@ -17,4 +17,3 @@ C:\Users\Huy Dinh\documents\visual studio 2015\Projects\ChronosOTAandTest\Chrono
 C:\Users\Huy Dinh\documents\visual studio 2015\Projects\ChronosOTAandTest\ChronosOTAandTest\obj\Release\ChronosOTAandTest.csproj.GenerateResource.Cache
 C:\Users\Huy Dinh\documents\visual studio 2015\Projects\ChronosOTAandTest\ChronosOTAandTest\obj\Release\ChronosOTAandTest.exe
 C:\Users\Huy Dinh\documents\visual studio 2015\Projects\ChronosOTAandTest\ChronosOTAandTest\obj\Release\ChronosOTAandTest.pdb
-C:\Users\Huy Dinh\documents\visual studio 2015\Projects\ChronosOTAandTest\ChronosOTAandTest\obj\Release\ChronosOTAandTest.csprojResolveAssemblyReference.cache
